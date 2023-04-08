@@ -15,119 +15,130 @@
 
                 <!-- Basic Bootstrap Table -->
                 <div class="card">
-                    <h5 class="card-header">Hóa đơn chi tiết</h5>
+                    <h5 class="card-header">Chi tiết hóa đơn </h5>
                     <div class="table-responsive text-nowrap">
                         <table class="table table-bordered">
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Khách hàng</th>
-                                <th>Ngày mua</th>
-                                <th>Trạng thái</th>
                                 <th>Tên sản phẩm</th>
-                                <th>Số trang</th>
-                                <th>Giá</th>
                                 <th>Ảnh</th>
-                                <th>Kích cỡ</th>
-                                <th>Ngày sản xuất</th>
-                                <th>Mô tả</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
                             </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
+                            <?php
+                            foreach ($detail as $product){
+                            ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    <?= $product['id_bill'] ?>
+                                </td>
+                                <td>
+                                    <?= $product['product_name'] ?>
+                                </td>
+                                <td>
+                                    <img src="img/<?= $product['image'] ?>" alt="" width="150px" height = "150px">
+                                </td>
+                                <td>
+                                    <?= $product['amount'] ?>
+                                </td>
+                                <td>
+                                    <?= $product['price'] ?>
+                                </td>
                             </tr>
+                                <?php
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>
+                    <div class="card-body">
+                        <?php
+                        foreach ($detail as $bill){
+                        ?>
+                        <form id="detail" method="POST" action="index.php?controller=hoadon&action=detail">
+                            <div class="row">
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="name_customer" class="form-label">Khách hàng</label>
+                                    <input
+                                            class="form-control"
+                                            type="text"
+                                            name="name_customer"
+                                            value=" <?= $bill['name_customer'] ?>"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="email" class="form-label">Ngày mua</label>
+                                    <input
+                                            class="form-control"
+                                            type="text"
+                                            name="email"
+                                            value=" <?= $bill['purchase_date'] ?>"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="status" class="form-label">Trạng thái</label>
+                                    <input
+                                            class="form-control"
+                                            type="text"
+                                            name="status"
+                                            value="<?php if ($bill['status'] == 0) {
+                                                echo "Chờ xử lý";
+                                            } elseif($bill['status'] == 1) {
+                                                echo "Đang xử lý";
+                                            }elseif($bill['status'] == 2) {
+                                                echo "Đang giao";
+                                            }elseif($bill['status'] == 3) {
+                                                echo "Đã giao hàng";
+                                            } ?>"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="email" class="form-label">Tổng tiền</label>
+                                    <input
+                                            class="form-control"
+                                            type="text"
+                                            name="email"
+                                            value="<?= $bill['total'] ?>"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="email" class="form-label">Phương thức thanh toán</label>
+                                    <input
+                                            class="form-control"
+                                            type="text"
+                                            name="email"
+                                            value="<?= $bill['name_payment'] ?>"
+                                            readonly
+                                    />
+                                </div>
+
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="total" class="form-label">Phương thức vận chuyển</label>
+                                    <input
+                                            class="form-control"
+                                            type="text"
+                                            name="total"
+                                            value="<?= $bill['name_shipping'] ?>"
+                                            readonly
+                                    />
+                                </div>
+
+                        </form>
+                            <?php
+                        }
+                        ?>
+                        <div class="mt-2">
+                            <button type="reset" class="btn btn-outline-secondary"><a style="color: #8592a3" href="index.php?controller=hoadon">Quay lại</a></button>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="card-body">
-                    <form id="formAccountSettings" method="POST" action="index.php?controller=hoadon&action=store">
-                        <div class="row">
-                            <div class="mb-3 col-md-6 ">
-                                <label for="email" class="form-label">Ngày mua</label>
-                                <input
-                                        class="form-control"
-                                        type="date"
-                                        id="email"
-                                        name="email"
-                                        value=""
-                                />
-                            </div>
-
-                            <div class="mb-3 col-md-6 ">
-                                <label for="total" class="form-label">Tổng giá</label>
-                                <input
-                                        class="form-control"
-                                        type="text"
-                                        id="total"
-                                        name="total"
-                                        value=""
-                                />
-                            </div>
-                            <div class="mb-3 col-md-6 ">
-                                <label for="price" class="form-label">Tên khách hàng</label>
-                                <select class="form-control" type="text" id="employee" name="category_id">
-                                    <option value=""> - Chọn - </option>
-                                    <?php
-                                    foreach ($arr['name_employee'] as $category) {
-                                        ?>
-                                        <option value="<?= $category['id_employee'] ?>">
-                                            <?= $category['name_employee'] ?>
-                                        </option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="mb-3 col-md-6 ">
-                                <label for="price" class="form-label">Phương thức thanh toán</label>
-                                <select class="form-control" type="text" id="price" name="publis_id">
-                                    <option value=""> - Chọn - </option>
-                                    <?php
-                                    foreach ($arr['publis'] as $publis) {
-                                        ?>
-                                        <option value="<?= $publis['id_publishing_company'] ?>">
-                                            <?= $publis['publishing_company_name'] ?>
-                                        </option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="mb-3 col-md-6 ">
-                                <label for="price" class="form-label">Phương thức vận chuyển</label>
-                                <select class="form-control" type="text" id="price" name="publis_id">
-                                    <option value=""> - Chọn - </option>
-                                    <?php
-                                    foreach ($arr['publis'] as $publis) {
-                                        ?>
-                                        <option value="<?= $publis['id_publishing_company'] ?>">
-                                            <?= $publis['publishing_company_name'] ?>
-                                        </option>
-                                        <?php
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-
-                            <div class="mt-2">
-                                <button type="submit" class="btn btn-primary me-2">Thêm hóa đơn</button>
-                                <button type="reset" class="btn btn-outline-secondary"><a style="color: #8592a3" href="index.php?controller=hoadon">Hủy bỏ</a></button>
-                            </div>
-                    </form>
-                </div>
-
                 <!--/ Basic Bootstrap Table -->
             </div>
 

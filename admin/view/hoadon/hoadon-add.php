@@ -24,7 +24,7 @@
                     <div style="display: flex ;justify-content: right; margin-top: 15px; margin-right: 20px">
                         <ul class="nav nav-pills flex-column flex-md-row mb-3">
                             <li class="nav-item">
-                                <a class="nav-link active" href="index.php?controller=hoadon&action=hd-sp-ct"><i
+                                <a class="nav-link active" href="index.php?controller=hoadon&action=showproduct"><i
                                             class="bx bx-plus"></i>Thêm sản phẩm</a>
                             </li>
                         </ul>
@@ -49,7 +49,7 @@
                                 </thead>
                                 <tbody class="table-border-bottom-0">
                                 <?php
-                                foreach ($array['infor'] as $product){
+                                foreach ($infor['cart'] as $product){
                                     ?>
                                     <tr>
                                         <td>
@@ -59,7 +59,7 @@
                                             <?= $product['product_name'] ?>
                                         </td>
                                         <td>
-                                            <img style="width: 150px" src="../../img/<?= $product['image'] ?>" alt="" >
+                                            <img style="width: 150px" src="img/<?= $product['image'] ?>" alt="" >
                                         </td>
                                         <td>
                                             <?= $product['amount'] ?>
@@ -79,73 +79,88 @@
 <!--                Danh sách sản phẩm    -->
 
                     <div class="card-body">
-                        <form id="formAccountSettings" method="POST" action="index.php?controller=hoadon&action=store">
+                        <form id="formAccountSettings" method="POST" action="index.php?controller=hoadon&action=addbill">
                             <div class="row">
                                 <div class="mb-3 col-md-6 ">
-                                    <label for="email" class="form-label">Ngày mua</label>
+                                    <label for="customer" class="form-label">Tên khách hàng</label>
+                                    <select class="form-control" type="text" id="customer" name="customer">
+                                        <option value=""> - Chọn - </option>
+                                        <?php
+                                        foreach ($arr['customer'] as $customer) {
+                                            ?>
+                                            <option value="<?= $customer['name_customer'] ?>">
+                                                <?= $customer['name_customer'] ?>
+                                            </option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="employee" class="form-label">Tên nhân viên xử lý</label>
+                                    <select class="form-control" type="text" id="employee" name="employee">
+                                        <option value=""> - Chọn - </option>
+                                        <?php
+                                        foreach ($arr['employee'] as $customer) {
+                                            ?>
+                                            <option value="<?= $customer['name_employee'] ?>">
+                                                <?= $customer['name_employee'] ?>
+                                            </option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="purchase_date" class="form-label">Ngày mua</label>
                                     <input
                                         class="form-control"
                                         type="date"
-                                        id="email"
-                                        name="email"
+                                        id="purchase_date"
+                                        name="purchase_date"
                                         value=""
                                     />
                                 </div>
-
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="payment" class="form-label">Phương thức thanh toán</label>
+                                    <select class="form-control" type="text" id="payment" name="payment">
+                                        <option value=""> - Chọn - </option>
+                                        <?php
+                                        foreach ($arr['payment'] as $payment) {
+                                            ?>
+                                            <option value="<?= $payment['name_payment'] ?>">
+                                                <?= $payment['name_payment'] ?>
+                                            </option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="mb-3 col-md-6 ">
+                                    <label for="shipping" class="form-label">Phương thức vận chuyển</label>
+                                    <select class="form-control" type="text" id="shipping" name="shipping">
+                                        <option value=""> - Chọn - </option>
+                                        <?php
+                                        foreach ($arr['shipping'] as $shipping) {
+                                            ?>
+                                            <option value="<?= $shipping['name_shipping'] ?>">
+                                                <?= $shipping['name_shipping'] ?>
+                                            </option>
+                                            <?php
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                                 <div class="mb-3 col-md-6 ">
                                     <label for="total" class="form-label">Tổng giá</label>
                                     <input
-                                        class="form-control"
-                                        type="text"
-                                        id="total"
-                                        name="total"
-                                        value=""
+                                            class="form-control"
+                                            type="text"
+                                            id="total"
+                                            name="total"
+                                            value=""
+                                            readonly
                                     />
-                                </div>
-                                <div class="mb-3 col-md-6 ">
-                                    <label for="price" class="form-label">Tên khách hàng</label>
-                                    <select class="form-control" type="text" id="employee" name="category_id">
-                                        <option value=""> - Chọn - </option>
-                                        <?php
-                                        foreach ($arr['name_employee'] as $category) {
-                                            ?>
-                                            <option value="<?= $category['id_employee'] ?>">
-                                                <?= $category['name_employee'] ?>
-                                            </option>
-                                            <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-md-6 ">
-                                    <label for="price" class="form-label">Phương thức thanh toán</label>
-                                    <select class="form-control" type="text" id="price" name="publis_id">
-                                        <option value=""> - Chọn - </option>
-                                        <?php
-                                        foreach ($arr['publis'] as $publis) {
-                                            ?>
-                                            <option value="<?= $publis['id_publishing_company'] ?>">
-                                                <?= $publis['publishing_company_name'] ?>
-                                            </option>
-                                            <?php
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-md-6 ">
-                                    <label for="price" class="form-label">Phương thức vận chuyển</label>
-                                    <select class="form-control" type="text" id="price" name="publis_id">
-                                        <option value=""> - Chọn - </option>
-                                        <?php
-                                        foreach ($arr['publis'] as $publis) {
-                                            ?>
-                                            <option value="<?= $publis['id_publishing_company'] ?>">
-                                                <?= $publis['publishing_company_name'] ?>
-                                            </option>
-                                            <?php
-                                        }
-                                        ?>
-                                    </select>
                                 </div>
 
                                 <div class="mt-2">
@@ -160,7 +175,6 @@
         </div>
     </div>
     <!-- / Content -->
-
 
     <div class="content-backdrop fade"></div>
 </div>

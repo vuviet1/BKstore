@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd22e623-cf73-40dc-bea0-3d51b7af5daa" name="Changes" comment="demo2">
+      <change afterPath="$PROJECT_DIR$/admin/view/hoadon/hd-sp.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/controller/hoadon-control.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/controller/hoadon-control.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/model/hoadon-model.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/model/hoadon-model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/view/hoadon/hd-sp-add.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/view/hoadon/hoadon-add.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view/hoadon/hoadon-add.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/view/hoadon/hoadon-show.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view/hoadon/hoadon-show.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/admin/view/hoadon/hoadonchitiet.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view/hoadon/hoadonchitiet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/view/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/view/navbar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/view/layout/history.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/view/layout/history.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +137,11 @@
       <workItem from="1680677053493" duration="12048000" />
       <workItem from="1680695078847" duration="7140000" />
       <workItem from="1680743327904" duration="996000" />
-      <workItem from="1680750094428" duration="3776000" />
+      <workItem from="1680750094428" duration="4178000" />
+      <workItem from="1680767455269" duration="6412000" />
+      <workItem from="1680791167946" duration="5283000" />
+      <workItem from="1680853924409" duration="15975000" />
+      <workItem from="1680919355347" duration="3102000" />
     </task>
     <task id="LOCAL-00001" summary="demo">
       <created>1679970489212</created>
@@ -269,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680688642288</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="demo2">
+      <created>1680754211948</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1680754211948</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
